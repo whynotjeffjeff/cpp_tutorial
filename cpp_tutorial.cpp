@@ -111,7 +111,84 @@ void initializer_4()
     Bar_ b;
 }
 
+void foo_()
+{
+    ;
+}
 
+void baz()
+{
+    int a;
+    a = 4;
+    int &b{a};
+    b = 5;
+    const int& c{a};
+    // c = 6;
+    void (*p)() = &foo_;
+    // foo_ = baz;
+}
+
+void value_category_1()
+{
+    baz();
+}
+
+struct S
+{
+    S() : m{42} {}
+    S(int a) : m{a} {}
+    int m;
+};
+
+void value_category_2()
+{
+    S s;
+    s = S{};
+    std::cout << s.m << '\n';
+    std::cout << (S{} = S{7}).m << '\n';
+}
+
+#include <type_traits>
+#include <utility>
+template <class T> struct is_prvalue : std::true_type {};
+template <class T> struct is_prvalue<T&> : std::false_type {};
+template <class T> struct is_prvalue<T&&> : std::false_type {};
+
+template <class T> struct is_lvalue : std::false_type {};
+template <class T> struct is_lvalue<T&> : std::true_type {};
+template <class T> struct is_lvalue<T&&> : std::false_type {};
+
+template <class T> struct is_xvalue : std::false_type {};
+template <class T> struct is_xvalue<T&> : std::false_type {};
+template <class T> struct is_xvalue<T&&> : std::true_type {};
+
+void value_category_3()
+{
+    int a{42};
+    int& b{a};
+    int&& r{std::move(a)};
+
+    // 表达式 `42` 是纯右值
+    static_assert(is_prvalue<decltype((42))>::value);
+
+    // 表达式 `a` 是左值
+    static_assert(is_lvalue<decltype((a))>::value);
+
+    // 表达式 `b` 是左值
+    static_assert(is_lvalue<decltype((b))>::value);
+
+    // 表达式 `std::move(a)` 是亡值
+    static_assert(is_xvalue<decltype((std::move(a)))>::value);
+
+    // 变量 `r` 的类型是右值引用
+    static_assert(std::is_rvalue_reference<decltype(r)>::value);
+
+    // 变量 `b` 的类型是左值引用
+    static_assert(std::is_lvalue_reference<decltype(b)>::value);
+
+    // 表达式 `r` 是左值
+    static_assert(is_lvalue<decltype((r))>::value);
+}
 
 int main()
 {
@@ -122,5 +199,8 @@ int main()
     initializer_2();
     initializer_3();
     initializer_4();
+    value_category_1();
+    value_category_2();
+    value_category_3();
     return 0;
 }

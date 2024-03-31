@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/thr3ad/Desktop/workflow/cpp/cpp_tutorial
+# Install script for directory: /mnt/c/Users/ebx/Desktop/workflow/cpp/cpp_tutorial
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/thr3ad/Desktop/workflow/cpp/cpp_tutorial/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/ebx/Desktop/workflow/cpp/cpp_tutorial/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
