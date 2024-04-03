@@ -2,6 +2,14 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../blog/blog/themes/solar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../blog/ebxeax" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../blog/nthr3ads" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../blog/nthr3ads_blog/.deploy_git" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../blog/post" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../c/cthreadpool" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../cumcm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../resume" vcs="Git" />
   </component>
 </project>
